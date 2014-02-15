@@ -1,0 +1,29 @@
+#include<stdio.h>
+#define LEN 8
+int main(){
+       int nchar=0,tabs,nspace=0,i;
+       while((i=getchar())!=EOF){
+    if(i==' '){ 
+     nchar++;   //nchar is number of char and blank in string(in one  line)   - here we inter space we must increase it  
+     nspace++;  //number of blank
+     }
+       else{
+          if(nspace==1 || nspace<LEN){ 
+              for(int j=0;j<nspace;j++) putchar(' ');}
+               else{ 
+                     int t=(nspace+nchar)%LEN;                    
+                     if(t==0&&nchar%LEN!=0){   
+                     for(int j=0;j<nspace;j++) putchar(' '); }
+                      if(t==0&&nchar%LEN==0){                     
+                      for(int j=0;j<nspace;j+=LEN) putchar('\t');    }
+       }   
+ nspace=0;
+ putchar(i);        
+   if(i=='\n') nchar=0;  //=0 because we go to next line then must reset it  
+     nchar++; //increase if char !=' ' and we calculate spaces like in second char in any string after spaces
+}
+}    
+ return 0;
+       }
+
+
